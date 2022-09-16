@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect, useLayoutEffect} from 'react';
 import TodoList from "./TodoList";
+import {nanoid} from "nanoid";
 
 export interface TodoItem {
     id: number | string,
@@ -53,9 +54,8 @@ function TodoApp() {
         if (inputRef.current?.name == null) return;
         const inputValue = inputRef.current.value ?? "";
         inputRef.current.value = "";
-        const randomInt = ~~(100 * Math.random());
         const newTodo: TodoItem = {
-            id: randomInt,
+            id: nanoid(10),
             text: inputValue,
             done: false
         }
